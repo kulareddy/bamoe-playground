@@ -1,22 +1,48 @@
-# persistance
+# persistence-9.0.1.Final
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
+
+# infinispan
+```
+ddocker run --name infinispan \
+    -p 11222:11222 \
+    -e USER="admin" \
+    -e PASS="changeme" \
+    -d infinispan/server
+```
+
+# mongodb
+```
+docker run --name mongodb \
+    -p 27017:27017 \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=changeme \
+    -d mongo
+```
 # postgres persistence
 ```
-podman run --name postgres -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=Quarkus123 -e POSTGRES_DB=kogito -p 5432:5432 -d postgres:14
+docker run --name postgres \
+    -e POSTGRES_USER=quarkus \
+    -e POSTGRES_PASSWORD=Quarkus123 \
+    -e POSTGRES_DB=kogito \
+    -p 5432:5432 \
+    -d postgres:14
 ```
 # mssql persistence
 ```
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Quarkus123' \
-   -p 1433:1433 --name sql_server_2019 \
-   -d mcr.microsoft.com/mssql/server:2022-latest
+docker run --name sql_server_2022 \
+    -e 'ACCEPT_EULA=Y' \
+    -e 'SA_PASSWORD=Quarkus123' \
+    -p 1433:1433  \
+    -d mcr.microsoft.com/mssql/server:2022-latest
 
 CREATE DATABASE kogito;
 GO
 ```
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
@@ -62,7 +88,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/persistance-1.0.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./target/persistence-9.0.1.Final-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
 

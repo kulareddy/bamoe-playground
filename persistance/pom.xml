@@ -54,14 +54,14 @@
             <version>${kogito.bom.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jdbc-postgresql</artifactId>
-        </dependency>
         <!-- <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jdbc-mssql</artifactId>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
         </dependency> -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-mssql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.quarkus</groupId>

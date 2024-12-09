@@ -4,11 +4,19 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
-# Run DB
+# postgres persistence
 ```
 podman run --name postgres -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=Quarkus123 -e POSTGRES_DB=kogito -p 5432:5432 -d postgres:14
 ```
+# mssql persistence
+```
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Quarkus123' \
+   -p 1433:1433 --name sql_server_2019 \
+   -d mcr.microsoft.com/mssql/server:2022-latest
 
+CREATE DATABASE kogito;
+GO
+```
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
